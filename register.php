@@ -53,6 +53,7 @@ if (isset($_POST["submit"])) {
             <input type="password" name="password2" id="password2">
         </div>
         <button type="submit" name="submit">Daftar</button>
+        <p>Sudah punya akun? <a href="index.php">klik disini!</a></p>
     </form>
 </body>
 

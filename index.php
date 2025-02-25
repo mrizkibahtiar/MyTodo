@@ -1,3 +1,12 @@
+<?php
+require "functions.php";
+
+if (isset($_POST["login"])) {
+    login($_POST);
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,13 +21,13 @@
     <form action="" method="post">
         <div>
             <label for="email">Username</label>
-            <input type="text" name="email" id="">
+            <input type="text" name="username" id="username">
         </div>
         <div>
             <label for="password">Password</label>
             <input type="password" name="password" id="password">
         </div>
-        <button type="submit" name="submit">Masuk</button>
+        <button type="submit" name="login" id="login">Masuk</button>
     </form>
     <p>Belum punya akun? <a href="register.php">Klik Disini.</a></p>
 
