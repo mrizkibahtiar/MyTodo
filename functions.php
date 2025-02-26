@@ -56,7 +56,7 @@ function tambah($data)
     $task = stripslashes(htmlspecialchars($data["task"]));
     $id = $_SESSION["id"];
 
-    mysqli_query($conn, "INSERT INTO tb_task VALUES ('', '$task', 'sudah', $id)");
+    mysqli_query($conn, "INSERT INTO tb_task VALUES ('', '$task', 'belum', $id)");
 }
 
 function query($query)

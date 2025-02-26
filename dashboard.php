@@ -19,6 +19,14 @@ $id = $_SESSION["id"];
 // kueri menampilkan data task
 $tasks = query("SELECT * FROM tb_task WHERE user_id = $id");
 
+// memperoleh task mana saja yang belum
+$task_belum = [];
+for ($i = 0; $i < count($tasks); $i++) {
+    if ($tasks[$i]["status"] == 'belum') {
+        $task_belum[] = $tasks[$i]["task"];
+    }
+}
+
 // kueri data pengguna
 $username = mysqli_fetch_row(mysqli_query($conn, "SELECT username FROM tb_user WHERE id = $id"))[0];
 
@@ -70,7 +78,7 @@ $username = mysqli_fetch_row(mysqli_query($conn, "SELECT username FROM tb_user W
     <div class="container">
         <div>
             <p class="title"><?= $username; ?></p>
-            <p>task yang belum</p>
+            <p><?= count($task_belum); ?> tugas belum selesai</p>
         </div>
         <div>
             <p class="highlight">MyTodo</p>
