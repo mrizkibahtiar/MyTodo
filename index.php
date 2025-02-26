@@ -16,8 +16,11 @@ if (isset($_POST["login"])) {
             $_SESSION["login"] = true;
             $_SESSION["id"] = $row["id"];
             header("Location: dashboard.php");
+            exit;
         }
     }
+
+    $error = true;
 }
 
 ?>
@@ -38,11 +41,22 @@ if (isset($_POST["login"])) {
         body {
             font-family: "Plus Jakarta Sans", serif;
         }
+
+        .warning {
+            color: red;
+            font-weight: bold;
+        }
     </style>
 </head>
 
 <body>
     <h1>MyTodo</h1>
+
+    <!-- error -->
+    <?php if (isset($error)): ?>
+        <p class="warning">Username / Password salah!</p>
+    <?php endif; ?>
+
     <form action="" method="post">
         <div>
             <label for="email">Username</label>
