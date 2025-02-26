@@ -14,11 +14,12 @@ if (isset($_POST["addTask"])) {
     tambah($_POST);
 }
 
+$id = $_SESSION["id"];
+
 // kueri menampilkan data task
-$tasks = query('SELECT * FROM tb_task');
+$tasks = query("SELECT * FROM tb_task WHERE user_id = $id");
 
 // kueri data pengguna
-$id = $_SESSION["id"];
 $username = mysqli_fetch_row(mysqli_query($conn, "SELECT username FROM tb_user WHERE id = $id"))[0];
 
 
