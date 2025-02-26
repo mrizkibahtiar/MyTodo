@@ -1,8 +1,25 @@
 <?php
+session_start();
 require "functions.php";
 
 if (isset($_POST["login"])) {
-    login($_POST);
+    global $conn;
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+
+    $result = mysqli_query($conn, "SELECT * FROM tb_user WHERE username = '$username'");
+
+    var_dump(mysqli_num_rows($result));
+
+    if (mysqli_num_rows($result) === 1) {
+        // cek password
+        $row = mysqli_fetch_assoc($result);
+        if (password_verify($password, $row["password"])) {
+            $_SESSION["login"] = true;
+            $_SESSION["id"] = $row["id"];
+            header("Location: dashboard.php");
+        }
+    }
 }
 
 ?>

@@ -50,19 +50,11 @@ function registrasi($data)
     return mysqli_affected_rows($conn);
 }
 
-function login($data)
+function tambah($data)
 {
     global $conn;
-    $username = $data["username"];
-    $password = $data["password"];
+    $task = stripslashes(htmlspecialchars($data["task"]));
+    $id = $_SESSION["id"];
 
-    $result = mysqli_query($conn, "SELECT * FROM tb_user WHERE username = '$username'");
-
-    if (mysqli_num_rows($result) === 1) {
-        // cek password
-        $row = mysqli_fetch_assoc($result);
-        if (password_verify($password, $row["password"])) {
-            header("Location: dashboard.php");
-        }
-    }
+    mysqli_query($conn, "INSERT INTO tb_task VALUES ('', '$task', 'sudah', $id)");
 }
