@@ -14,12 +14,13 @@ if (isset($_POST["addTask"])) {
     tambah($_POST);
 }
 
-// kueri menampilkan data
-$result = mysqli_query($conn, "SELECT * FROM tb_task");
-$rows = [];
-while ($row = mysqli_fetch_assoc($result)) {
-    $rows[] = $row;
-}
+// kueri menampilkan data task
+$tasks = query('SELECT * FROM tb_task');
+
+// kueri data pengguna
+$id = $_SESSION["id"];
+$username = mysqli_fetch_row(mysqli_query($conn, "SELECT username FROM tb_user WHERE id = $id"))[0];
+
 
 ?>
 
@@ -56,13 +57,18 @@ while ($row = mysqli_fetch_assoc($result)) {
             align-items: center;
             text-align: center;
         }
+
+        .title {
+            font-size: 1.3rem;
+            font-weight: 500;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
         <div>
-            <p>Username</p>
+            <p class="title"><?= $username; ?></p>
             <p>task yang belum</p>
         </div>
         <div>
@@ -88,7 +94,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         <h1>Daftar To Do List</h1>
         <div>
             <ul>
-                <?php foreach ($rows as $task): ?>
+                <?php foreach ($tasks as $task): ?>
                     <li><?= $task["task"] ?></li>
                 <?php endforeach; ?>
             </ul>
