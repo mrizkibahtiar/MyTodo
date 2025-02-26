@@ -9,8 +9,6 @@ if (isset($_POST["login"])) {
 
     $result = mysqli_query($conn, "SELECT * FROM tb_user WHERE username = '$username'");
 
-    var_dump(mysqli_num_rows($result));
-
     if (mysqli_num_rows($result) === 1) {
         // cek password
         $row = mysqli_fetch_assoc($result);
@@ -31,6 +29,16 @@ if (isset($_POST["login"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyTodo - To Do List Apps</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            font-family: "Plus Jakarta Sans", serif;
+        }
+    </style>
 </head>
 
 <body>
