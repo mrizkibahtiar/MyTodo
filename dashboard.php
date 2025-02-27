@@ -79,6 +79,19 @@ $username = mysqli_fetch_row(mysqli_query($conn, "SELECT username FROM tb_user W
             font-size: 1.3rem;
             font-weight: 500;
         }
+
+        .container-list {
+            list-style: none;
+        }
+
+        .task-list {
+            cursor: pointer;
+            margin-bottom: 11px;
+        }
+
+        .line {
+            text-decoration: line-through;
+        }
     </style>
 </head>
 
@@ -110,13 +123,14 @@ $username = mysqli_fetch_row(mysqli_query($conn, "SELECT username FROM tb_user W
     <div>
         <h1>Daftar To Do List</h1>
         <div>
-            <ul>
+            <ul class="container-list">
                 <?php foreach ($tasks as $task): ?>
-                    <li><?= $task["task"] ?></li>
+                    <li class="task-list"><?= $task["task"] ?></li>
                 <?php endforeach; ?>
             </ul>
         </div>
     </div>
+    <script src="js/script.js"></script>
 </body>
 
 </html>
