@@ -66,6 +66,15 @@ $username = mysqli_fetch_row(mysqli_query($conn, "SELECT username FROM tb_user W
             display: flex;
             gap: 10px;
             align-items: center;
+            cursor: pointer;
+        }
+
+        .addTask img {
+            margin-top: 7px;
+        }
+
+        .addTask:hover {
+            font-weight: 800;
         }
 
         .container2 {
@@ -83,6 +92,9 @@ $username = mysqli_fetch_row(mysqli_query($conn, "SELECT username FROM tb_user W
 
         .container-list {
             list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
         .task-list {
@@ -94,6 +106,25 @@ $username = mysqli_fetch_row(mysqli_query($conn, "SELECT username FROM tb_user W
             text-decoration: line-through;
             color: rgb(146, 146, 146);
         }
+
+        .selesai {
+            color: lightgreen;
+            font-weight: 800;
+        }
+
+        .tugas {
+            color: red;
+            font-weight: 800;
+        }
+
+        .jumlah {
+            font-weight: 800;
+        }
+
+        .container-task {
+            display: flex;
+            gap: 10px;
+        }
     </style>
 </head>
 
@@ -103,10 +134,10 @@ $username = mysqli_fetch_row(mysqli_query($conn, "SELECT username FROM tb_user W
             <p class="title"><?= $username; ?></p>
             <p class="task-count">
                 <?php if (count($task_belum) > 0): ?>
-                    <?= count($task_belum); ?>
-                    tugas belum selesai
+                    <span class="jumlah"><?= count($task_belum); ?></span>
+                    <span class="tugas"> tugas belum selesai</span>
                 <?php else: ?>
-                    tidak ada tugas
+                    <span class="selesai">tidak ada tugas</span>
                 <?php endif; ?>
             </p>
         </div>
@@ -134,10 +165,16 @@ $username = mysqli_fetch_row(mysqli_query($conn, "SELECT username FROM tb_user W
         <div>
             <ul class="container-list">
                 <?php foreach ($tasks as $task): ?>
-                    <li class="task-list" data-id="<?= $task['id']; ?>">
-                        <?= $task['task'] ?>
-                        <input type="hidden" name="status-task" class="status-task" value="<?= $task['status']; ?>">
-                    </li>
+                    <div class="container-task">
+                        <div>
+                            <img src="img/trash.png" alt="trash" width="30px">
+                            <img src="img/pencil.png" alt="pencil" width="30px">
+                        </div>
+                        <li class="task-list" data-id="<?= $task['id']; ?>">
+                            <?= $task['task'] ?>
+                            <input type="hidden" name="status-task" class="status-task" value="<?= $task['status']; ?>">
+                        </li>
+                    </div>
                 <?php endforeach; ?>
             </ul>
         </div>

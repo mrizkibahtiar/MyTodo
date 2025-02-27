@@ -22,10 +22,10 @@ taksList.forEach(task => {
                 if (data.success) {
                     let belumSelesai = document.querySelectorAll(".status-task[value='belum']").length;
                     if (belumSelesai == 0) {
-                        taskCount.innerText = `tidak ada tugas`;
+                        taskCount.innerHTML = `<span class="selesai">tidak ada tugas</span>`;
                     }
                     if (belumSelesai > 0) {
-                        taskCount.innerText = `${belumSelesai} tugas belum selesai`;
+                        taskCount.innerHTML = `<span class="jumlah">${belumSelesai}</span> <span class="tugas"> tugas belum selesai</span>`;
                     }
                 }
             });
