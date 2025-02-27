@@ -21,7 +21,12 @@ taksList.forEach(task => {
             .then(data => {
                 if (data.success) {
                     let belumSelesai = document.querySelectorAll(".status-task[value='belum']").length;
-                    taskCount.innerText = `${belumSelesai} tugas belum selesai`;
+                    if (belumSelesai == 0) {
+                        taskCount.innerText = `tidak ada tugas`;
+                    }
+                    if (belumSelesai > 0) {
+                        taskCount.innerText = `${belumSelesai} tugas belum selesai`;
+                    }
                 }
             });
 
