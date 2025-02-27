@@ -31,6 +31,7 @@ for ($i = 0; $i < count($tasks); $i++) {
 $username = mysqli_fetch_row(mysqli_query($conn, "SELECT username FROM tb_user WHERE id = $id"))[0];
 
 
+
 ?>
 
 <!DOCTYPE html>
@@ -91,6 +92,7 @@ $username = mysqli_fetch_row(mysqli_query($conn, "SELECT username FROM tb_user W
 
         .line {
             text-decoration: line-through;
+            color: rgb(146, 146, 146);
         }
     </style>
 </head>
@@ -125,7 +127,10 @@ $username = mysqli_fetch_row(mysqli_query($conn, "SELECT username FROM tb_user W
         <div>
             <ul class="container-list">
                 <?php foreach ($tasks as $task): ?>
-                    <li class="task-list"><?= $task["task"] ?></li>
+                    <li class="task-list" data-id="<?= $task['id']; ?>">
+                        <?= $task['task'] ?>
+                        <input type="hidden" name="status-task" class="status-task" value="<?= $task['status']; ?>">
+                    </li>
                 <?php endforeach; ?>
             </ul>
         </div>
