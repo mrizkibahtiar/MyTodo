@@ -101,7 +101,7 @@ $username = mysqli_fetch_row(mysqli_query($conn, "SELECT username FROM tb_user W
     <div class="container">
         <div>
             <p class="title"><?= $username; ?></p>
-            <p><?= count($task_belum); ?> tugas belum selesai</p>
+            <p class="task-count"><?= count($task_belum); ?> tugas belum selesai</p>
         </div>
         <div>
             <p class="highlight">MyTodo</p>

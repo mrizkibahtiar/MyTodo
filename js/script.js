@@ -1,5 +1,6 @@
 // tangkap task-list
 let taksList = document.querySelectorAll('.task-list');
+let taskCount = document.querySelector('.task-count');
 
 taksList.forEach(task => {
     let taskId = task.querySelector('input');
@@ -15,8 +16,14 @@ taksList.forEach(task => {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: `id=${task.dataset.id}&status=${status}`
-        });
-
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    let belumSelesai = document.querySelectorAll(".status-task[value='belum']").length;
+                    taskCount.innerText = `${belumSelesai} tugas belum selesai`;
+                }
+            });
 
     })
 

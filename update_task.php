@@ -6,5 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $status = $_POST["status"];
 
     $query = "UPDATE tb_task SET status = '$status' WHERE id = $id";
-    mysqli_query($conn, $query);
+    $result = mysqli_query($conn, $query);
+
+    echo json_encode(["success" => $result]);
 }
