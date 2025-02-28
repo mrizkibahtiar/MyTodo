@@ -90,7 +90,16 @@ $username = mysqli_fetch_row(mysqli_query($conn, "SELECT username FROM tb_user W
             font-weight: 500;
         }
 
+        .outer {
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
         .container-list {
+            width: 70%;
             list-style: none;
             display: flex;
             flex-direction: column;
@@ -98,6 +107,7 @@ $username = mysqli_fetch_row(mysqli_query($conn, "SELECT username FROM tb_user W
         }
 
         .task-list {
+            width: 60%;
             cursor: pointer;
             margin-bottom: 11px;
         }
@@ -160,24 +170,24 @@ $username = mysqli_fetch_row(mysqli_query($conn, "SELECT username FROM tb_user W
             <button type="submit" name="addTask" id="addTask">Simpan</button>
         </form>
     </div>
-    <div>
+    <div class="outer">
         <h1>Daftar To Do List</h1>
-        <div>
-            <ul class="container-list">
-                <?php foreach ($tasks as $task): ?>
-                    <div class="container-task">
-                        <div>
-                            <img src="img/trash.png" alt="trash" width="30px">
-                            <img src="img/pencil.png" alt="pencil" width="30px">
-                        </div>
-                        <li class="task-list" data-id="<?= $task['id']; ?>">
-                            <?= $task['task'] ?>
-                            <input type="hidden" name="status-task" class="status-task" value="<?= $task['status']; ?>">
-                        </li>
+        <ul class="container-list">
+            <?php foreach ($tasks as $task): ?>
+                <div class="container-task">
+                    <div>
+                        <a href="hapus.php?id=<?= $task['id'] ?>">
+                            <img src="img/trash.png" alt="trash" width="23px">
+                        </a>
+                        <img src="img/pencil.png" alt="pencil" width="23px">
                     </div>
-                <?php endforeach; ?>
-            </ul>
-        </div>
+                    <li class="task-list" data-id="<?= $task['id']; ?>">
+                        <?= $task['task'] ?>
+                        <input type="hidden" name="status-task" class="status-task" value="<?= $task['status']; ?>">
+                    </li>
+                </div>
+            <?php endforeach; ?>
+        </ul>
     </div>
     <script src="js/script.js"></script>
 </body>
