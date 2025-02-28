@@ -135,6 +135,15 @@ $username = mysqli_fetch_row(mysqli_query($conn, "SELECT username FROM tb_user W
             display: flex;
             gap: 10px;
         }
+
+        .link {
+            text-decoration: none;
+        }
+
+        .hilang {
+            visibility: hidden;
+            display: none;
+        }
     </style>
 </head>
 
@@ -176,15 +185,22 @@ $username = mysqli_fetch_row(mysqli_query($conn, "SELECT username FROM tb_user W
             <?php foreach ($tasks as $task): ?>
                 <div class="container-task">
                     <div>
-                        <a href="hapus.php?id=<?= $task['id'] ?>">
+                        <a class="link" href="hapus.php?id=<?= $task['id'] ?>" onclick="return confirm('yakin?')">
                             <img src="img/trash.png" alt="trash" width="23px">
                         </a>
-                        <img src="img/pencil.png" alt="pencil" width="23px">
+                        <p class="link button-edit">
+                            <img src="img/pencil.png" alt="pencil" width="23px">
+                        </p>
                     </div>
                     <li class="task-list" data-id="<?= $task['id']; ?>">
                         <?= $task['task'] ?>
+
                         <input type="hidden" name="status-task" class="status-task" value="<?= $task['status']; ?>">
                     </li>
+                    <form action="edit.php" method="post" class="form-edit hilang">
+                        <input type="text" name="task-edit" class="task-edit" value="<?= $task['task'] ?>">
+                        <button type="submit" name="edit" id="edit">edit</button>
+                    </form>
                 </div>
             <?php endforeach; ?>
         </ul>

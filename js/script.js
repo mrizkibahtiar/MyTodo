@@ -37,3 +37,17 @@ taksList.forEach(task => {
         task.classList.add('line');
     }
 });
+
+
+
+
+// handle button edit
+let buttonEdit = document.querySelectorAll('.button-edit');
+let containerTask = document.querySelectorAll('.container-task');
+for (let i = 0; i < buttonEdit.length; i++) {
+    buttonEdit[i].addEventListener('click', function () {
+        taksList[i].classList.toggle('hilang');
+        const formEdit = containerTask[i].querySelector('.form-edit');
+        formEdit.classList.toggle('hilang')
+    })
+}
