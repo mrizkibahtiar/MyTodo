@@ -79,3 +79,15 @@ function hapus($id)
 
     return mysqli_affected_rows($conn);
 }
+
+function edit($data)
+{
+    global $conn;
+    $id = $data["task-id"];
+    $task = htmlspecialchars($data["task-edit"]);
+
+    mysqli_query($conn, "UPDATE tb_task SET task = '$task' WHERE id = $id");
+
+
+    return mysqli_affected_rows($conn);
+}

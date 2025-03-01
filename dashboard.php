@@ -31,6 +31,18 @@ for ($i = 0; $i < count($tasks); $i++) {
 $username = mysqli_fetch_row(mysqli_query($conn, "SELECT username FROM tb_user WHERE id = $id"))[0];
 
 
+// handle button edit
+if (isset($_POST["edit"])) {
+    if (edit($_POST) > 0) {
+        header('Location: dashboard.php');
+    } else {
+        echo "<script>
+        alert('data tidak berhasil diubah!');
+        </script>";
+    }
+}
+
+
 
 ?>
 
@@ -46,7 +58,8 @@ $username = mysqli_fetch_row(mysqli_query($conn, "SELECT username FROM tb_user W
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
         rel="stylesheet">
     <style>
-        body {
+        body,
+        * {
             font-family: "Plus Jakarta Sans", serif;
         }
 
@@ -197,8 +210,9 @@ $username = mysqli_fetch_row(mysqli_query($conn, "SELECT username FROM tb_user W
 
                         <input type="hidden" name="status-task" class="status-task" value="<?= $task['status']; ?>">
                     </li>
-                    <form action="edit.php" method="post" class="form-edit hilang">
+                    <form action="" method="post" class="form-edit hilang">
                         <input type="text" name="task-edit" class="task-edit" value="<?= $task['task'] ?>">
+                        <input type="hidden" name="task-id" class="task-id" value="<?= $task['id']; ?>">
                         <button type="submit" name="edit" id="edit">edit</button>
                     </form>
                 </div>
