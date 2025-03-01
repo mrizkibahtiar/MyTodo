@@ -219,7 +219,16 @@ if (isset($_POST["edit"])) {
             <?php endforeach; ?>
         </ul>
     </div>
-    <script src="js/script.js"></script>
+    <script src="js/script.js">
+    </script>
+    <script>
+        // handle visibilitas form add
+        const addButton = document.querySelector('.add-task');
+        const formAdd = document.querySelector('.form-add');
+        addButton.addEventListener('click', () => {
+            formAdd.classList.toggle('hilang');
+        })
+    </script>
 </body>
 
 </html>

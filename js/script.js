@@ -53,12 +53,3 @@ for (let i = 0; i < buttonEdit.length; i++) {
 };
 
 
-
-// handle visibilitas form add
-const addButton = document.querySelector('.add-task');
-console.log(addButton);
-const formAdd = document.querySelector('.form-add');
-addButton.addEventListener('click', () => {
-    alert('ok');
-    formAdd.classList.toggle('hilang');
-})
