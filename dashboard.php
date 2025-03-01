@@ -75,18 +75,18 @@ if (isset($_POST["edit"])) {
             font-size: 25px;
         }
 
-        .addTask {
+        .add-task {
             display: flex;
             gap: 10px;
             align-items: center;
             cursor: pointer;
         }
 
-        .addTask img {
+        .add-task img {
             margin-top: 7px;
         }
 
-        .addTask:hover {
+        .add-task:hover {
             font-weight: 800;
         }
 
@@ -181,13 +181,13 @@ if (isset($_POST["edit"])) {
         </div>
     </div>
     <div class="container2">
-        <div class="addTask">
+        <div class="add-task">
             <div class=".img">
                 <img src="img/plus.png" alt="plus" width="30px">
             </div>
             <p>Add New Task</p>
         </div>
-        <form action="" method="post">
+        <form action="" method="post" class="form-add hilang">
             <input type="text" name="task" id="task">
             <button type="submit" name="addTask" id="addTask">Simpan</button>
         </form>

@@ -48,6 +48,17 @@ for (let i = 0; i < buttonEdit.length; i++) {
     buttonEdit[i].addEventListener('click', function () {
         taksList[i].classList.toggle('hilang');
         const formEdit = containerTask[i].querySelector('.form-edit');
-        formEdit.classList.toggle('hilang')
-    })
-}
+        formEdit.classList.toggle('hilang');
+    });
+};
+
+
+
+// handle visibilitas form add
+const addButton = document.querySelector('.add-task');
+console.log(addButton);
+const formAdd = document.querySelector('.form-add');
+addButton.addEventListener('click', () => {
+    alert('ok');
+    formAdd.classList.toggle('hilang');
+})
