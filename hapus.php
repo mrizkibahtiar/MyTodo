@@ -10,7 +10,6 @@ $id = $_GET['id'];
 
 if (hapus($id) > 0) {
     echo "<script>
-    alert('Task berhasil dihapus');
     document.location.href = 'dashboard.php';
     </script>";
 
