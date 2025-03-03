@@ -38,37 +38,141 @@ if (isset($_POST["login"])) {
         rel="stylesheet">
 
     <style>
-        body {
+        * {
             font-family: "Plus Jakarta Sans", serif;
+        }
+
+        body {
+            width: 100%;
+            overflow: hidden;
         }
 
         .warning {
             color: red;
             font-weight: bold;
         }
+
+        .highlight {
+            font-size: 50px;
+        }
+
+        .container {
+            margin-inline: auto;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container-form {
+            background-color: white;
+            box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.1);
+            padding-inline: 25px;
+            padding-block: 30px;
+            border-radius: 10px;
+            border: 1px solid rgba(203, 203, 203, 0.87);
+        }
+
+        .container-form .username,
+        .password {
+            display: flex;
+            width: 400px;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container-form .username label,
+        .password label {
+            align-self: baseline;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .container-form .username input,
+        .password input {
+            box-sizing: border-box;
+            width: 100%;
+            margin-bottom: 10px;
+            height: 40px;
+            border-radius: 10px;
+            padding-inline: 10px;
+            border: 1px solid gainsboro;
+            font-size: 15px;
+        }
+
+        .container-form .username input:focus,
+        .container-form .password input:focus {
+            border: 1px solid black;
+            outline: none;
+        }
+
+        .container-form #login {
+            margin-top: 10px;
+            width: 100%;
+            height: 40px;
+            font-size: 15px;
+            font-weight: bold;
+            color: white;
+            background-color: black;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .container-form #login:hover {
+            transition-duration: 440ms;
+            background-color: white;
+            color: black;
+            border: 2px solid black;
+        }
+
+        .container-register {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-align: center;
+        }
+
+        .container-register a {
+            text-decoration: none;
+            color: rgb(31, 0, 184);
+            font-weight: bolder;
+        }
+
+        .container-register a:hover {
+            color: gray;
+            transition-duration: 350ms;
+        }
     </style>
 </head>
 
 <body>
-    <h1>MyTodo</h1>
+    <div class="container">
+        <h1 class="highlight">MyTodo</h1>
 
-    <!-- error -->
-    <?php if (isset($error)): ?>
-        <p class="warning">Username / Password salah!</p>
-    <?php endif; ?>
+        <!-- error -->
+        <?php if (isset($error)): ?>
+            <p class="warning">Username / Password salah!</p>
+        <?php endif; ?>
 
-    <form action="" method="post">
-        <div>
-            <label for="email">Username</label>
-            <input type="text" name="username" id="username">
+        <div class="container-form">
+            <form action="" method="post">
+                <div class="username">
+                    <label for="email">Username</label>
+                    <input type="text" name="username" id="username" placeholder="username">
+                </div>
+                <div class="password">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" placeholder="password">
+                </div>
+                <button type="submit" name="login" id="login">Masuk</button>
+            </form>
         </div>
-        <div>
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password">
-        </div>
-        <button type="submit" name="login" id="login">Masuk</button>
-    </form>
-    <p>Belum punya akun? <a href="register.php">Klik Disini.</a></p>
+    </div>
+    <div class="container-register">
+        <p>Belum punya akun?</p>
+        <a href="register.php">Klik Disini</a>
+    </div>
 
 </body>
 
