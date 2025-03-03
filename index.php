@@ -148,7 +148,7 @@ if (isset($_POST["login"])) {
 
 <body>
     <div class="container">
-        <h1 class="highlight">MyTodo</h1>
+        <h1 class="highlight">MyTodo - Login</h1>
 
         <!-- error -->
         <?php if (isset($error)): ?>
