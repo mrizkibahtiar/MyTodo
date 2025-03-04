@@ -71,6 +71,7 @@ if (isset($_POST["edit"])) {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            height: 100px;
         }
 
         .container1 .highlight {
@@ -79,10 +80,14 @@ if (isset($_POST["edit"])) {
         }
 
         .container1 .user-task {
+            padding: 10px;
+            width: 200px;
+            border: 1px solid rgb(209, 209, 209);
             display: flex;
-            margin-top: 25px;
             flex-direction: column;
             gap: 3px;
+            border-radius: 10px;
+            box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
         }
 
         .container1 .user-task .title {
