@@ -82,18 +82,23 @@ if (isset($_POST["edit"])) {
             display: flex;
             margin-top: 25px;
             flex-direction: column;
-            gap: 8px;
+            gap: 3px;
         }
 
         .container1 .user-task .title {
             display: flex;
-            font-weight: 500;
+            font-weight: 700;
             align-items: center;
             gap: 7px;
         }
 
         .container1 .user-task .title svg {
             width: 30px;
+        }
+
+        .container1 .user-task .task-count {
+            margin-left: 37px;
+            box-sizing: border-box;
         }
 
         .line {
@@ -103,12 +108,10 @@ if (isset($_POST["edit"])) {
 
         .selesai {
             color: lightgreen;
-            font-weight: 800;
         }
 
         .tugas {
             color: red;
-            font-weight: 800;
         }
 
         .jumlah {
