@@ -141,7 +141,7 @@ if (isset($_POST["register"])) {
 
         <!-- error -->
         <?php if (isset($error)): ?>
-            <div class="warning">
+            <div ss="warning">
                 <?= $error; ?>
             </div>
         <?php endif; ?>
@@ -150,15 +150,15 @@ if (isset($_POST["register"])) {
             <form action="" method="post">
                 <div class="username">
                     <label for="username">Username</label>
-                    <input type="text" name="username" id="username" placeholder="username">
+                    <input type="text" name="username" id="username" placeholder="username" required>
                 </div>
                 <div class="password">
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="password" placeholder="password">
+                    <input type="password" name="password" id="password" placeholder="password" required>
                 </div>
                 <div class="password">
                     <label for="password2">Konfirmasi Password</label>
-                    <input type="password" name="password2" id="password2" placeholder="konfirmasi password">
+                    <input type="password" name="password2" id="password2" placeholder="konfirmasi password" required>
                 </div>
                 <button type="submit" name="register" id="register">Daftar</button>
             </form>
