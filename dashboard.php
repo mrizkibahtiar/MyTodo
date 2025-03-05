@@ -193,6 +193,69 @@ if (isset($_POST["edit"])) {
             border: 2px solid black;
         }
 
+        /* container 3 */
+        .container3 .container-task {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .container3 .container-task .action {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .container3 .container-task .action img {
+            cursor: pointer;
+        }
+
+
+        .container3 .container-task .task-list {
+            cursor: pointer;
+            list-style-type: none;
+        }
+
+
+        .container3 .form-edit {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .container3 .form-edit input {
+            box-sizing: border-box;
+            width: 100%;
+            height: 40px;
+            border-radius: 10px;
+            padding-inline: 10px;
+            border: 1px solid gainsboro;
+            font-size: 15px;
+        }
+
+        .container3 .form-edit input:focus {
+            border: 1px solid black;
+            outline: none;
+        }
+
+        .container3 .form-edit #edit {
+            width: fit-content;
+            height: 40px;
+            font-size: 15px;
+            font-weight: bold;
+            color: white;
+            background-color: black;
+            border-radius: 10px;
+            cursor: pointer;
+
+        }
+
+        .container3 .form-edit #edit:hover {
+            transition: all 300ms;
+            background-color: white;
+            color: black;
+            border: 2px solid black;
+        }
 
         .line {
             text-decoration: line-through;
@@ -253,12 +316,12 @@ if (isset($_POST["edit"])) {
             <button type="submit" name="addTask" id="addTask">Simpan</button>
         </form>
     </div>
-    <div class="outer">
+    <div class="container3">
         <h1>Daftar To Do List</h1>
-        <ul class="container-list">
+        <ul>
             <?php foreach ($tasks as $task): ?>
                 <div class="container-task">
-                    <div>
+                    <div class="action">
                         <a class="link" href="hapus.php?id=<?= $task['id'] ?>" onclick="return confirm('yakin?')">
                             <img src="img/trash.png" alt="trash" width="23px">
                         </a>
