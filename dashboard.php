@@ -74,7 +74,7 @@ if (isset($_POST["edit"])) {
             align-items: center;
             justify-content: space-between;
             height: 100px;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
         }
 
         .container1 .highlight {
@@ -86,7 +86,6 @@ if (isset($_POST["edit"])) {
             margin-top: 35px;
             padding: 10px;
             width: 200px;
-            border: 1px solid rgb(209, 209, 209);
             display: flex;
             flex-direction: column;
             gap: 3px;
@@ -99,15 +98,6 @@ if (isset($_POST["edit"])) {
             font-weight: 700;
             align-items: center;
             gap: 7px;
-        }
-
-        .container1 .user-task .title svg {
-            width: 30px;
-        }
-
-        .container1 .user-task .task-count {
-            margin-left: 37px;
-            box-sizing: border-box;
         }
 
         .container1 a {
@@ -284,11 +274,6 @@ if (isset($_POST["edit"])) {
     <div class="container1">
         <div class="user-task">
             <span class="title">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                    <path fill-rule="evenodd"
-                        d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
-                        clip-rule="evenodd" />
-                </svg>
                 <?= $username; ?>
             </span>
             <span class="task-count">
