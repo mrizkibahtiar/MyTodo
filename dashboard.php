@@ -67,11 +67,14 @@ if (isset($_POST["edit"])) {
             padding-inline: 200px;
         }
 
+        /* container 1 */
+
         .container1 {
             display: flex;
             align-items: center;
             justify-content: space-between;
             height: 100px;
+            margin-bottom: 50px;
         }
 
         .container1 .highlight {
@@ -80,6 +83,7 @@ if (isset($_POST["edit"])) {
         }
 
         .container1 .user-task {
+            margin-top: 35px;
             padding: 10px;
             width: 200px;
             border: 1px solid rgb(209, 209, 209);
@@ -87,7 +91,7 @@ if (isset($_POST["edit"])) {
             flex-direction: column;
             gap: 3px;
             border-radius: 10px;
-            box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+            /* box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1); */
         }
 
         .container1 .user-task .title {
@@ -105,6 +109,90 @@ if (isset($_POST["edit"])) {
             margin-left: 37px;
             box-sizing: border-box;
         }
+
+        .container1 a {
+            text-decoration: none;
+            color: rgb(31, 0, 184);
+            font-weight: bolder;
+        }
+
+        .container1 a:hover {
+            color: rgb(164, 164, 164);
+            transition-duration: 150ms;
+        }
+
+        /* container 2 */
+
+        .container2 {
+            width: 500px;
+        }
+
+        .container2 .add-task {
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            border: 1px solid rgb(203, 203, 203);
+            width: fit-content;
+            padding-inline: 10px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            transition: all 200ms;
+        }
+
+        .container2 .add-task:hover {
+            font-weight: bold;
+            border: 2px solid black;
+            box-shadow: 5px 5px 1px rgba(0, 0, 0, 1);
+            transform: translate(-6px, -6px);
+        }
+
+        .container2 .add-task img {
+            margin-top: 3px;
+        }
+
+        .container2 .form-add {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .container2 .form-add input {
+            box-sizing: border-box;
+            width: 100%;
+            height: 40px;
+            border-radius: 10px;
+            padding-inline: 10px;
+            border: 1px solid gainsboro;
+            font-size: 15px;
+        }
+
+        .container2 .form-add input:focus {
+            border: 1px solid black;
+            outline: none;
+        }
+
+        .container2 .form-add #addTask {
+            width: fit-content;
+            height: 40px;
+            font-size: 15px;
+            font-weight: bold;
+            color: white;
+            background-color: black;
+            border-radius: 10px;
+            cursor: pointer;
+
+        }
+
+        .container2 .form-add #addTask:hover {
+            transition: all 300ms;
+            background-color: white;
+            color: black;
+            border: 2px solid black;
+        }
+
 
         .line {
             text-decoration: line-through;
@@ -124,8 +212,7 @@ if (isset($_POST["edit"])) {
         }
 
         .hilang {
-            visibility: hidden;
-            display: none;
+            display: none !important;
         }
     </style>
 </head>
@@ -143,7 +230,8 @@ if (isset($_POST["edit"])) {
             </span>
             <span class="task-count">
                 <?php if (count($task_belum) > 0): ?>
-                    <span class="jumlah"><?= count($task_belum); ?></span>
+                    <span class="jumlah">
+                        <?= count($task_belum); ?></span>
                     <span class="tugas"> tugas belum selesai</span>
                 <?php else: ?>
                     <span class="selesai">tidak ada tugas</span>
@@ -155,55 +243,53 @@ if (isset($_POST["edit"])) {
             <a href="logout.php">logout</a>
         </div>
     </div>
-    <d$taslass="container2">
+    <div class="container2">
         <div class="add-task">
-            <div class="img">
-                <img src="img/plus.png" alt="plus" width="30px">
-            </div>
+            <img src="img/plus.png" alt="plus" width="30px">
             <p>Add New Task</p>
         </div>
         <form action="" method="post" class="form-add hilang">
-            <input type="text" name="task" id="task">
+            <input type="text" name="task" id="task" required autocomplete="off">
             <button type="submit" name="addTask" id="addTask">Simpan</button>
         </form>
-        </d$taslass=>
-        <div class="outer">
-            <h1>Daftar To Do List</h1>
-            <ul class="container-list">
-                <?php foreach ($tasks as $task): ?>
-                    <div class="container-task">
-                        <div>
-                            <a class="link" href="hapus.php?id=<?= $task['id'] ?>" onclick="return confirm('yakin?')">
-                                <img src="img/trash.png" alt="trash" width="23px">
-                            </a>
-                            <p class="link button-edit">
-                                <img src="img/pencil.png" alt="pencil" width="23px">
-                            </p>
-                        </div>
-                        <li class="task-list" data-id="<?= $task['id']; ?>">
-                            <?= $task['task'] ?>
-
-                            <input type="hidden" name="status-task" class="status-task" value="<?= $task['status']; ?>">
-                        </li>
-                        <form action="" method="post" class="form-edit hilang">
-                            <input type="text" name="task-edit" class="task-edit" value="<?= $task['task'] ?>">
-                            <input type="hidden" name="task-id" class="task-id" value="<?= $task['id']; ?>">
-                            <button type="submit" name="edit" id="edit">edit</button>
-                        </form>
+    </div>
+    <div class="outer">
+        <h1>Daftar To Do List</h1>
+        <ul class="container-list">
+            <?php foreach ($tasks as $task): ?>
+                <div class="container-task">
+                    <div>
+                        <a class="link" href="hapus.php?id=<?= $task['id'] ?>" onclick="return confirm('yakin?')">
+                            <img src="img/trash.png" alt="trash" width="23px">
+                        </a>
+                        <p class="link button-edit">
+                            <img src="img/pencil.png" alt="pencil" width="23px">
+                        </p>
                     </div>
-                <?php endforeach; ?>
-            </ul>
-        </div>
-        <script src="js/script.js">
-        </script>
-        <script>
-            // handle visibilitas form add
-            const addButton = document.querySelector('.add-task');
-            const formAdd = document.querySelector('.form-add');
-            addButton.addEventListener('click', () => {
-                formAdd.classList.toggle('hilang');
-            })
-        </script>
+                    <li class="task-list" data-id="<?= $task['id']; ?>">
+                        <?= $task['task'] ?>
+
+                        <input type="hidden" name="status-task" class="status-task" value="<?= $task['status']; ?>">
+                    </li>
+                    <form action="" method="post" class="form-edit hilang">
+                        <input type="text" name="task-edit" class="task-edit" value="<?= $task['task'] ?>">
+                        <input type="hidden" name="task-id" class="task-id" value="<?= $task['id']; ?>">
+                        <button type="submit" name="edit" id="edit">edit</button>
+                    </form>
+                </div>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+    <script src="js/script.js">
+    </script>
+    <script>
+        // handle visibilitas form add
+        const addButton = document.querySelector('.add-task');
+        const formAdd = document.querySelector('.form-add');
+        addButton.addEventListener('click', () => {
+            formAdd.classList.toggle('hilang');
+        })
+    </script>
 </body>
 
 </html>
